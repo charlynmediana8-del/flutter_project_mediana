@@ -1,4 +1,6 @@
+import 'package:facebook/model/story_model.dart';
 import 'package:facebook/widgets/createpost.dart';
+import 'package:facebook/widgets/storieslist.dart';
 import 'package:flutter/material.dart';
 
 class NewsFeed extends StatefulWidget {
@@ -6,9 +8,50 @@ class NewsFeed extends StatefulWidget {
 
   @override
   State<NewsFeed> createState() => _NewsFeedState();
-}
+}List<StoryModel> stories = [
+  StoryModel(
+    id: '1', 
+    username: 'Juan', 
+    profileImagePath: 'assets/profile/profile1.jpg', 
+    storyImagePath: 'assets/myday/myday1.jpg', 
+    timestamp: DateTime.now().subtract(Duration(hours: 5)), 
+    isViewed: false),
+
+StoryModel(
+   id: '2', 
+   username: 'Lycah', 
+   profileImagePath: 'assets/profile/prof2.jpg', 
+   storyImagePath: 'assets/myday/myday2.jpg', 
+   timestamp: DateTime.now().subtract(Duration(hours: 5)), 
+   isViewed: false),
+
+   StoryModel(
+    id: '3', 
+    username: 'Joa', 
+    profileImagePath: 'assets/profile/prof3.jpg', 
+    storyImagePath: 'assets/myday/myday3.jpg', 
+    timestamp: DateTime.now().subtract(Duration(hours: 5)), 
+    isViewed: false),
+
+   StoryModel(
+    id: '4', 
+    username: 'Maria', 
+    profileImagePath: 'assets/profile/profile4.jpg', 
+    storyImagePath: 'assets/myday/myday4.jpg', 
+    timestamp: DateTime.now().subtract(Duration(hours: 5)), 
+   isViewed: false),
+
+   StoryModel(
+    id: '5', 
+    username: 'Jose', 
+    profileImagePath: 'assets/profile/profile5.jpg', 
+    storyImagePath: 'assets/myday/myday5.jpg', 
+    timestamp: DateTime.now().subtract(Duration(hours: 5)), 
+    isViewed: false),
+];
 
 class _NewsFeedState extends State<NewsFeed> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,13 +63,17 @@ class _NewsFeedState extends State<NewsFeed> {
       height: 80,
       ),
       actions: [
-
         IconButton(onPressed: (){}, icon: Icon(Icons.search,)),
         DrawerButton(),
       ],
       ),
       body:  Column(
-        children: [Createpost()],
+        children: [Createpost(),
+        StoriesList (
+          stories: stories,
+          onStoryTap: (story) {}
+          )
+        ],
       ),
       );
   }
